@@ -35,7 +35,7 @@ async def chat_message(question):
     return messager
 
 
-@Client.on_message(filters.command(["lodu","jhatuai"],prefix))  # Removed & filters.me
+@Client.on_message(filters.command("lodu",prefix))  # Removed & filters.me
 async def chatgpt(client, message: Message):  # Added client
     if len(message.command) > 1:
         prompt = message.text.split(maxsplit=1)[1]
