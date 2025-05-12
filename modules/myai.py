@@ -6,10 +6,6 @@ from datetime import datetime as dt
 
 from utils.misc import modules_help, prefix
 from utils.scripts import format_exc, import_library
-import random
-
-a = ["😀", "😎", "😍", "👍", "🎉", "✨", "🔥", "💯", "😊","🤩","💪","⚡","🌟","🤘","✌️","🤞","🤌","🤏","👌","🤝","🦾"]
-emogi = random.choice(a)
 
 
 g4f = import_library("g4f")
@@ -73,7 +69,7 @@ async def chatgpt(client, message: Message):  # Added client
         if message.from_user.id == 5462178946:
             await message.edit_text(format_exc(e))
         else:
-            await message.reply_text(emogi)
+            pass
 
 modules_help["ai"] = {
     "ai [question]": "ask gpt",
