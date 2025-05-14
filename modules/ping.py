@@ -22,7 +22,7 @@ from pyrogram.types import Message
 from utils.misc import modules_help, prefix
 
 
-@Client.on_message(filters.command(["ping", "p"], prefix) & filter.me)
+@Client.on_message(filters.command(["ping", "p"], prefix) & filters.me)
 async def ping(_, message: Message):
     start = perf_counter()
     await message.edit("<b>Pong!</b>")
