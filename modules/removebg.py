@@ -91,7 +91,7 @@ def _check_rmbg(func):
     return check_rmbg
 
 
-@Client.on_message(filters.command("rmbg", prefix) & filters.me)
+@Client.on_message(filters.command("rmbg", prefix))
 @_check_rmbg
 async def rmbg(client: Client, message: Message):
     pablo = await edit_or_reply(message, "<code>Processing...</code>")
@@ -128,7 +128,7 @@ async def rmbg(client: Client, message: Message):
         end = datetime.now()
         ms = (end - start).seconds
         await pablo.edit(
-            f"<code>Removed image's Background in {ms} seconds, powered by </code> <b>@moonuserbot</b>"
+            f"<code>Removed image's Background in {ms} seconds, powered by </code> <b>@lullilal</b>"
         )
         if os.path.exists("BG_rem.png"):
             os.remove("BG_rem.png")
