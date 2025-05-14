@@ -22,12 +22,12 @@ from pyrogram.types import Message
 from utils.misc import modules_help, prefix
 
 
-@Client.on_message(filters.command(["ping", "p"], prefix) & filters.me)
+@Client.on_message(filters.command(["ping", "p"], prefix))
 async def ping(_, message: Message):
     start = perf_counter()
-    await message.edit("<b>Pong!</b>")
+    await message.edit_or_reply("<b>Pong!</b>")
     end = perf_counter()
-    await message.edit(f"<b>Pong! {round(end - start, 3)}s</b>")
+    await message.edit_or_reply(f"<b>Pong! {round(end - start, 3)}s</b>")
 
 
 modules_help["ping"] = {
