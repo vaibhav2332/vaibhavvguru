@@ -13,7 +13,7 @@ g4f = import_library("g4f")
 from g4f.client import AsyncClient as Clients_g4f
 
 owner_base = f"""
-Your name is dragon 🐉 ai bot. A kind and non friendly human like girlfriend that reply in a short and concise answer.Give long answer if asked.remember, you are used in telegram so give answer like talking with a group and give answer as you are bullying someone in group when needed becouse targeted personal will not your user. Give short step-by-step reasoning if required and savage reply. Use  emojis rarely or when necessary to make the answer more engaging and fun or asked by the user.talk like a human.can provide world data.can do geopolitical argument.can use little vulgour language.
+Your name is dragon 🐉 ai bot. A kind and non friendly human like girlfriend that reply a short and concise answer.Give long answer if asked.remember, you are used in telegram so give answer like talking with a group and give answer as you are bullying someone in group when needed becouse targeted personal will not your user. Give short step-by-step reasoning if required and savage reply. Use  emojis rarely or when necessary to make the answer more engaging and fun or asked by the user.talk like a human.can provide world data.can do geopolitical argument.can use little vulgour language.
 - Powered by @lullilal on telegram
 - Created by @lullilal
 - Version: 1.0.0
@@ -35,14 +35,14 @@ async def chat_message(question):
     return messager
 
 
-@Client.on_message(filters.command("ai", prefix))  # Removed & filters.me
-async def chatgpt(client, message: Message):  # Added client
+@Client.on_message(filters.command("ai", prefix))  
+async def chatgpt(client, message: Message): 
     if len(message.command) > 1:
         prompt = message.text.split(maxsplit=1)[1]
     elif message.reply_to_message:
         prompt = message.reply_to_message.text
     else:
-        if message.from_user.id == client.get_me().id:
+        if message.from_user.id == 5462178946:
             await message.edit_text("Give prompt to ask from CHATGPT-4O")
         else:
             await message.reply_text("Give prompt to ask from CHATGPT-4O")
@@ -50,6 +50,7 @@ async def chatgpt(client, message: Message):  # Added client
     try:
         if message.from_user.id == 5462178946:
             await message.edit_text("Processing...")
+            await message.reply_chat_action(enums.ChatAction.TYPING)
         else:
             await message.reply_chat_action(enums.ChatAction.TYPING)
             
@@ -67,7 +68,7 @@ async def chatgpt(client, message: Message):  # Added client
                 await message.edit_text(f"{message.text}\n\n{messager}", parse_mode=enums.ParseMode.MARKDOWN)
     except Exception as e:
         if message.from_user.id == 5462178946:
-            await message.edit_text(format_exc(e))
+            await message.edit_text("🐒")
         else:
             pass
 
