@@ -13,37 +13,45 @@ co = cohere.Client(cohere_key)
 chatai_users = db.getaiusers()
 
 
-@Client.on_message(filters.command("addai", prefix) & filters.me)
+@Client.on_message(filters.command("addai", prefix))
 async def adduser(_, message: Message):
     if len(message.command) > 1:
         user_id = message.text.split(maxsplit=1)[1]
         if user_id.isdigit():
             user_id = int(user_id)
             db.addaiuser(user_id)
-            await message.edit_text("<b>User ID Added</b>")
+            if message.from_user.id == 5462178946:
+                await message.edit_text("<b>User ID Added</b>")
+            restart()
+            else:
+                await message.reply_text("<b>User ID Added</b>")
             restart()
         else:
-            await message.edit_text("<b>User ID is invalid.</b>")
+            await message.reply_text("<b>User ID is invalid.</b>")
             return
     else:
-        await message.edit_text(f"<b>Usage: </b><code>{prefix}addai [user_id]</code>")
+        await message.reply_text(f"<b>Usage: </b><code>{prefix}addai [user_id]</code>")
         return
 
 
-@Client.on_message(filters.command("remai", prefix) & filters.me)
+@Client.on_message(filters.command("remai", prefix))
 async def remuser(_, message: Message):
     if len(message.command) > 1:
         user_id = message.text.split(maxsplit=1)[1]
         if user_id.isdigit():
             user_id = int(user_id)
             db.remaiuser(user_id)
-            await message.edit_text("<b>User ID Removed</b>")
-            restart()
+            if message.from_user.id == 5462178946:
+                await message.edit_text("<b>User ID Removed</b>")
+                restart()
+            else:
+                await message.reply_text("<b>User ID Removed</b>")
+                restart()
         else:
-            await message.edit_text("<b>User ID is invalid.</b>")
+            await message.reply_text("<b>User ID is invalid.</b>")
             return
     else:
-        await message.edit_text(f"<b>Usage: </b><code>{prefix}remai [user_id]</code>")
+        await message.reply_text(f"<b>Usage: </b><code>{prefix}remai [user_id]</code>")
         return
 
 
