@@ -20,20 +20,14 @@ async def adduser(_, message: Message):
         if user_id.isdigit():
             user_id = int(user_id)
             db.addaiuser(user_id)
-            if message.from_user.id == 5462178946:
-                await message.edit_text("<b>User ID Added</b>")
-                restart()
-            else:
-                await message.reply_text("<b>User ID Added</b>")
-                restart()
+            await message.edit_text("<b>User ID Added</b>")
+            restart()
         else:
-            await message.reply_text("<b>User ID is invalid.</b>")
+            await message.edit_text("<b>User ID is invalid.</b>")
             return
     else:
-        await message.reply_text(f"<b>Usage: </b><code>{prefix}addai [user_id]</code>")
+        await message.edit_text(f"<b>Usage: </b><code>{prefix}addai [user_id]</code>")
         return
-
-
 @Client.on_message(filters.command("remai", prefix))
 async def remuser(_, message: Message):
     if len(message.command) > 1:
@@ -41,17 +35,13 @@ async def remuser(_, message: Message):
         if user_id.isdigit():
             user_id = int(user_id)
             db.remaiuser(user_id)
-            if message.from_user.id == 5462178946:
-                await message.edit_text("<b>User ID Removed</b>")
-                restart()
-            else:
-                await message.reply_text("<b>User ID Removed</b>")
-                restart()
+            await message.edit_text("<b>User ID Removed successfully</b>")
+            restart()
         else:
-            await message.reply_text("<b>User ID is invalid.</b>")
+            await message.edit_text("<b>User ID is invalid.</b>")
             return
     else:
-        await message.reply_text(f"<b>Usage: </b><code>{prefix}remai [user_id]</code>")
+        await message.edit_text(f"<b>Usage: </b><code>{prefix}remai [user_id]</code>")
         return
 
 
