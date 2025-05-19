@@ -22,10 +22,10 @@ async def adduser(_, message: Message):
             db.addaiuser(user_id)
             if message.from_user.id == 5462178946:
                 await message.edit_text("<b>User ID Added</b>")
-            restart()
+                restart()
             else:
                 await message.reply_text("<b>User ID Added</b>")
-            restart()
+                restart()
         else:
             await message.reply_text("<b>User ID is invalid.</b>")
             return
