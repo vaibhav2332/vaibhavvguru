@@ -48,7 +48,7 @@ async def chatgpt(client, message: Message):
         return
     try:
         if message.from_user.id == 5462178946:
-            await message.edit_text("Processing...")
+            await message.edit_text("<code>Processing...</code>")
 
         else:
             await message.reply_chat_action(enums.ChatAction.TYPING)
