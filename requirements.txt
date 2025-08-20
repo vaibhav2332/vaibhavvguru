@@ -22,4 +22,4 @@ pySmartDL
 lexica-api
 ffprobe
 mediafire
-ffmpeg
+ffmpeg_static
