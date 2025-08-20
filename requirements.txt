@@ -22,4 +22,3 @@ pySmartDL
 lexica-api
 ffprobe
 mediainfo
-ffmpeg_static
