@@ -20,3 +20,6 @@ aiohttp
 aiofiles
 pySmartDL
 lexica-api
+ffprobe
+mediafire
+ffmpeg
