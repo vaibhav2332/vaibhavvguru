@@ -21,5 +21,6 @@ aiofiles
 pySmartDL
 lexica-api
 opencv-python
+opencv-python-headless
 ffprobe
 mediainfo
