@@ -20,5 +20,6 @@ aiohttp
 aiofiles
 pySmartDL
 lexica-api
+opencv-python
 ffprobe
 mediainfo
