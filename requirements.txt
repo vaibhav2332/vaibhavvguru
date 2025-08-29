@@ -18,9 +18,9 @@ GitPython
 beautifulsoup4
 aiohttp
 aiofiles
+opencv-python-headless
 pySmartDL
 lexica-api
 opencv-python
-opencv-python-headless
 ffprobe
 mediainfo
