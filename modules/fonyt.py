@@ -27,7 +27,13 @@ FONTS = {
     "hacker": {'a': '4', 'b': '8', 'c': '[', 'd': ')', 'e': '3', 'f': '|=', 'g': '6', 'h': '#', 'i': '1', 'j': ',_|', 'k': '|<', 'l': '1', 'm': '/\\/\\', 'n': '^/', 'o': '0', 'p': '|*', 'q': '(_,)', 'r': '|2', 's': '5', 't': '7', 'u': '(_)', 'v': '\\/', 'w': '\\/\\/', 'x': '><', 'y': 'j', 'z': '2'},
     "knight": {'a': 'Λ', 'b': 'ß', 'c': 'ㄈ', 'd': 'D', 'e': 'Σ', 'f': 'F', 'g': 'G', 'h': 'H', 'i': 'I', 'j': 'J', 'k': 'K', 'l': 'L', 'm': 'M', 'n': 'N', 'o': 'Ө', 'p': 'P', 'q': 'Q', 'r': 'Я', 's': 'S', 't': 'T', 'u': 'Ц', 'v': 'V', 'w': 'W', 'x': 'X', 'y': 'Y', 'z': 'Z'},
 }
-
+DECORATORS = [
+    ("꧁ঔৣ✞", "✞ঔৣ꧂"), ("【", "】"), ("『", "』"), ("༺", "༻"), ("♛", "♛"),
+    ("▬ι════", "════ι▬"), ("★彡", "彡★"), ("×º°”˜`”°º×", "×º°”˜`”°º×"),
+    ("ıllıllı", "ıllıllı"), ("⚡", "⚡"), ("◥", "◤"), ("︻╦╤─", "─╤╦︻"),
+    ("❄", "❄"), ("✞", "✞"), ("⫷", "⫸"), ("『ঔৣ☬✞", "✞☬ঔৣ』"),
+    ("꧁", "꧂"), ("✧", "✧"), ("♔", "♔"), ("۝", "۝")
+]
 # --- Glitch / Crash Effects ---
 def advanced_glitch(text):
     """Applies a more complex and varied glitch effect."""
@@ -115,9 +121,30 @@ async def font_styler(client: Client, message: Message):
 
     except Exception as e:
         await message.edit(f"<b>An error occurred:</b> <code>{e}</code>")
+@Client.on_message(filters.command("decorate", prefix) & filters.me)
+async def decorate_command(client: Client, message: Message):
+    """Decorates text with fancy symbols."""
+    try:
+        text_to_decorate = " ".join(message.command[1:])
+        if not text_to_decorate:
+            await message.edit("<b>Usage:</b> <code>.decorate [text]</code>")
+            return
+
+        response = f"<b>Original:</b> <code>{text_to_decorate}</code>\n\n"
+        
+        for i, (prefix_dec, suffix_dec) in enumerate(DECORATORS):
+            decorated_text = f"{prefix_dec}{text_to_decorate}{suffix_dec}"
+            response += f"<b>Style {i+1}:</b> <code>{decorated_text}</code>\n"
+
+        await message.edit(response, parse_mode=enums.ParseMode.HTML)
+
+    except Exception as e:
+        await message.edit(f"<b>An error occurred:</b> <code>{e}</code>")
 
 
 # --- Add to modules_help ---
 modules_help["fontstyler"] = {
-    "font [text]": "Generates your text in 30+ different fancy and crash font styles."
+    "font [text]": "Generates your text in 30+ different fancy and crash font styles.",
+    "decorate [text]": "Decorate your text with artistic symbols.",
 }
+
