@@ -1,4 +1,4 @@
-import os
+import opy
 from pyrogram import Client, filters, enums
 from pyrogram.types import Message
 from utils.misc import modules_help, prefix
@@ -104,9 +104,9 @@ async def text_to_pdf(client: Client, message: Message):
 # #################### HIGHLIGHTED CHANGE START ################### #
 # ############################################################### #
 # --- .py command ---
-@Client.on_message(filters.command("py", prefix) & filters.me & filters.reply)
+@Client.on_message(filters.command("pyc", prefix) & filters.me & filters.reply)
 async def text_to_py(client: Client, message: Message):
-    """Converts a text message to a .py file."""
+    """Converts a text message to a .pyc file."""
     if not message.reply_to_message.text:
         await message.edit("<b>Error:</b> Please reply to a message with text.", parse_mode=enums.ParseMode.HTML)
         return
@@ -145,5 +145,6 @@ modules_help["fileconverter"] = {
     "txt (reply to text)": "Converts the replied text message into a .txt document.",
     "pdf (reply to text)": "Converts the replied text message into a .pdf document.",
     # #################### HIGHLIGHTED CHANGE ################### #
-    "py (reply to text)": "Converts the replied text message into a .py document.",
+    "pycfileply to text)": "Converts the replied text message into a .py document.",
 }
+
