@@ -24,3 +24,6 @@ lexica-api
 opencv-python
 ffprobe
 mediainfo
+pyPDF2
+zipfile
+tarfile
